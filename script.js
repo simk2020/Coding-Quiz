@@ -2,10 +2,10 @@
 
 
   // 1. click the start button to start the game. So create an  event listener 
-
-
+ 
 // 2. this questions will be presented once the user clicks on the start.
 // created a variable called questions to store an array of all the multiple choice questions, its choices and corect answers. 
+startBtn.addEventListener("click", function (){
 
 var questions = [
   {
@@ -28,6 +28,8 @@ var questions = [
     choices : ["Mars","Neptune","Saturn","Jupiter"]
     ans: "Jupiter"
   }]
+
+});
 
 
 
