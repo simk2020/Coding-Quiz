@@ -1,5 +1,11 @@
 # 04 Web APIs: Code Quiz
 
+
+* The URL of the functional, deployed application  : https://simk2020.github.io/codingQuiz/
+
+* The URL of the GitHub repository : https://github.com/simk2020/codingQuiz.git
+
+
 ## Your Task
 
 As you proceed in your journey to becoming a full-stack web developer, it’s likely that you’ll be asked to complete a coding assessment, perhaps as part of an interview process. A typical coding assessment is a combination of multiple-choice questions and interactive coding challenges. 
@@ -83,6 +89,4 @@ This homework is graded based on the following criteria:
 
 You are required to submit BOTH of the following for review:
 
-* The URL of the functional, deployed application.
 
-* The URL of the GitHub repository. Give the repository a unique name and include a README describing the project.

@@ -1,6 +1,8 @@
 var startBtn = document.querySelector("#startBtn")
 var question = document.querySelector("#questions")
 var choices = document.querySelector("#choices")
+var score = document.querySelector("score")
+
 
   // 1. click the start button to start the game. So create an  event listener 
  
@@ -20,22 +22,22 @@ var currentIndex = 0
 
 var quesArray = [
   {
-    question:"how many planets in our solar system?",
+    question:"How many planets are there in our solar system?",
     choices:["1","8","9","5"],
     correct: "8"
   },
   {
-    question:"which planet is not in our solar system? ",
+    question:"which planet is not part of our solar system? ",
     choices:["Mars","Neptune","Pluto","Earth"],
-    correct: "pluto"
+    correct: "Pluto"
   },
   {
-    question:"Gravity of moon ? ",
+    question:"is there any Gravity of moon ? ",
     choices:["162 m/s2","0","1.62 m/s2","16.2"],
     correct: "1.62 m/s2"
   },
   {
-    question: "Which planet in our solar system have the most amount of moons",
+    question: "Which planet have the maximum numbers of moon, in our solar system ",
     choices : ["Mars","Neptune","Saturn","Jupiter"],
     correct: "Jupiter"
   }]
@@ -48,8 +50,20 @@ quesArray[currentIndex].choices.forEach(function(choiceName, choiceIndex){
  var choiceBtn = document.createElement("button");
  choiceBtn.textContent = choiceName;
   choices.appendChild(choiceBtn)
+  // if (choice clicked === correct),
+  //   text-content : correct 
+  //    score +=5
+  //   else 
+  // text-content : wrong 
+  //    score 0
+// time -= 10 seconds 
+  
+// next questions
+
+
 })
 }
+
 
 
  

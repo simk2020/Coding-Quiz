@@ -3,16 +3,30 @@
     margin: 0 auto 50px auto;
     width: 100%;
     padding: 30px;
-    color: #ffffff;
-    background: #114061;
-    border-bottom: 3px solid #00a8e8;
+    color: #f0f0f0;
+    background: #611e5c;
+    border-bottom: 3px solid #100413;
     text-align: center;
   }
 
   .btn-primary {
-      background-color: #00a8e8;
+      background-color: #4e124a;
   }
 
   section {
       text-align: center;
+  }
+
+  button {
+    margin: 0 auto 20px auto;
+    width: 20%;
+    padding: 10px;
+    color: #ffffff;
+    background: #d498f7;
+    text-align: center;
+    align-content: center;
+  }
+
+  .questions {
+      align-content: center;
   }
