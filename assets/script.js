@@ -1,3 +1,5 @@
+
+// variable decleration >> 
 var startBtn = document.querySelector("#startBtn")
 var question = document.querySelector("#questions")
 var choices = document.querySelector("#choices")
@@ -5,10 +7,8 @@ var score = document.querySelector("score")
 var timeEl = document.querySelector(".time");
 
 
-  // 1. click the start button to start the game. So create an  event listener 
-  
 // timer code starts
-var secondsLeft = 3;
+var secondsLeft = 40;
 function setTime() {
   var timerInterval = setInterval(function() {
     secondsLeft--;
@@ -22,7 +22,7 @@ function setTime() {
 function sendMessage() {
   timeEl.textContent = " ";
   var imgEl = document.createElement("img"); //created the image element to display the image once time ends.
-  imgEl.setAttribute("src", "assets/gameover1.jpg"); // image source  
+  imgEl.setAttribute("src", "assets/gameover.jpg"); // image source  
   timeEl.appendChild(imgEl); //appending image.
 }
 setTime();
@@ -36,15 +36,10 @@ setTime();
 //[0] is the index of the first question
 //To move up to the next question, we need to increase the array index
 
-var currentIndex = 0 
-
-//quesArray[currentIndex].question
-//once you have selected a choice
-
-
+// array for the question created>>
 var quesArray = [
   {
-    question:"How many planets are there in our solar system?",
+    question:"How many planets are in our solar system?",
     choices:["1","8","9","5"],
     correct: "8"
   },
@@ -62,18 +57,48 @@ var quesArray = [
     question: "Which planet have the maximum numbers of moon, in our solar system ",
     choices : ["Mars","Neptune","Saturn","Jupiter"],
     correct: "Jupiter"
-  }]
+  }];
+  // array for the question ENDED>>
 
-;
 
+var currentIndex = 0 
 function showQuestions (){
 question.textContent = quesArray[currentIndex].question //this is putting a question that matches the current Index into question no. 1
 quesArray[currentIndex].choices.forEach(function(choiceName, choiceIndex){ // this is looping thru all the choicenames using its index and displaying them on the screen
   // write a code for the loop to run more than once. 
  var choiceBtn = document.createElement("button"); // this is creating a choice button for each choice 
- choiceBtn.textContent = choiceName;  // this is updating the text Content of each ChoiceBtn to display its NAME.
+  choiceBtn.textContent = choiceName;  // this is updating the text Content of each ChoiceBtn to display its NAME.
   choices.appendChild(choiceBtn) //ths is display the choices with the actual content usind appendchild
-  // console.log (choices.appendChild(choiceBtn) )
+  console.log (choices.appendChild(choiceBtn))
+})
+};
+
+
+
+  // once user clicks on a choice..store that value...and check if that value equals the value of correct answer of that question.
+  // choiceBtn.addEventListener("click", function(event) {
+  //   event.preventDefault();
+  //   if(choiceBtn.matches === quesArray.correct) {
+  //     var correctAnswer = document.createElement("div");
+  //     correctAnswer.textContent = correct;
+  //     score +=5
+  //     score.append(correct);
+  //   }
+  //   currentIndex++
+  // });
+  // quesArray.correct= correctAnswer 
+  // function correctAnswer (){
+  //   console.log ("works till now")
+    
+  // }
+
+  // if (choiceBtn.textContent === quesArray.choiceIndex()){
+  //   
+  // }
+  // else {
+  //   score +=0
+  //   timeEl -= 5
+  // }
 
 //  if (choiceBtn === correct) // if choiceBtn clicked is equal to correct 
 // textContent : correct  // display string Correct at the bottom of the choices
@@ -83,17 +108,10 @@ quesArray[currentIndex].choices.forEach(function(choiceName, choiceIndex){ // th
   //   score += 0;
   //   time -= 10 ;
   // } 
-    
-  // currentIndex++
   
-// next questions
+// next question2
+// 
 
-})
-}
-
-
-
- 
 //  user get presented with a new questions after answering each question. so may be a loop for next question to be prompted. 
 // once either user answer 1 q correctly or incorrectly (-5 sec) or time per question runs out, call for the next question. 
 
@@ -109,5 +127,8 @@ quesArray[currentIndex].choices.forEach(function(choiceName, choiceIndex){ // th
 
 // var highestScore = "#highestScore"
 //submitButton.addEventListener('click', showResults);
-startBtn.addEventListener("click", showQuestions)
+startBtn.addEventListener("click", showQuestions())
+// Event.preventDefault();
+// choices.addEventListener("click", correctAnswer)
+// startBtn.addEventListener("click", setTime)
 //startBtn.onclick = showQuestions;
