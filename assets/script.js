@@ -2,9 +2,31 @@ var startBtn = document.querySelector("#startBtn")
 var question = document.querySelector("#questions")
 var choices = document.querySelector("#choices")
 var score = document.querySelector("score")
+var timeEl = document.querySelector(".time");
 
 
   // 1. click the start button to start the game. So create an  event listener 
+  
+// timer code starts
+var secondsLeft = 3;
+function setTime() {
+  var timerInterval = setInterval(function() {
+    secondsLeft--;
+    timeEl.textContent = secondsLeft + " seconds Left.";
+    if(secondsLeft === 0) {
+      clearInterval(timerInterval);
+      sendMessage();
+    }
+  }, 1000);
+}
+function sendMessage() {
+  timeEl.textContent = " ";
+  var imgEl = document.createElement("img"); //created the image element to display the image once time ends.
+  imgEl.setAttribute("src", "assets/gameover1.jpg"); // image source  
+  timeEl.appendChild(imgEl); //appending image.
+}
+setTime();
+// timer code ends
  
 // 2. this questions will be presented once the user clicks on the start.
 // created a variable called questions to store an array of all the multiple choice questions, its choices and corect answers. 
@@ -18,7 +40,7 @@ var currentIndex = 0
 
 //quesArray[currentIndex].question
 //once you have selected a choice
-//currentIndex++
+
 
 var quesArray = [
   {
@@ -45,21 +67,26 @@ var quesArray = [
 ;
 
 function showQuestions (){
-question.textContent = quesArray[currentIndex].question
-quesArray[currentIndex].choices.forEach(function(choiceName, choiceIndex){
- var choiceBtn = document.createElement("button");
- choiceBtn.textContent = choiceName;
-  choices.appendChild(choiceBtn)
-  // if (choice clicked === correct),
-  //   text-content : correct 
-  //    score +=5
-  //   else 
-  // text-content : wrong 
-  //    score 0
-// time -= 10 seconds 
+question.textContent = quesArray[currentIndex].question //this is putting a question that matches the current Index into question no. 1
+quesArray[currentIndex].choices.forEach(function(choiceName, choiceIndex){ // this is looping thru all the choicenames using its index and displaying them on the screen
+  // write a code for the loop to run more than once. 
+ var choiceBtn = document.createElement("button"); // this is creating a choice button for each choice 
+ choiceBtn.textContent = choiceName;  // this is updating the text Content of each ChoiceBtn to display its NAME.
+  choices.appendChild(choiceBtn) //ths is display the choices with the actual content usind appendchild
+  // console.log (choices.appendChild(choiceBtn) )
+
+//  if (choiceBtn === correct) // if choiceBtn clicked is equal to correct 
+// textContent : correct  // display string Correct at the bottom of the choices
+//   score +=5 
+  // else {
+  //   // textContent : wrong 
+  //   score += 0;
+  //   time -= 10 ;
+  // } 
+    
+  // currentIndex++
   
 // next questions
-
 
 })
 }
