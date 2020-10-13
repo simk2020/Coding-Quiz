@@ -1,31 +1,43 @@
 
 // variable decleration >> 
-var startBtn = document.querySelector("#startBtn")
-var question = document.querySelector("#questions")
-var choices = document.querySelector("#choices")
-var score = document.querySelector("score")
+var startBtn = document.querySelector("#startBtn");
+var question = document.querySelector("#questions");
+var choices = document.querySelector("#choices");
+var score = document.querySelector("score");
 var timeEl = document.querySelector(".time");
+var nextchoice = document.getElementById("next-btn");
+
+
+
+startBtn.addEventListener("click", showQuestions)
 
 
 // timer code starts
 var secondsLeft = 40;
-function setTime() {
-  var timerInterval = setInterval(function() {
-    secondsLeft--;
-    timeEl.textContent = secondsLeft + " seconds Left.";
-    if(secondsLeft === 0) {
-      clearInterval(timerInterval);
-      sendMessage();
-    }
-  }, 1000);
-}
-function sendMessage() {
-  timeEl.textContent = " ";
-  var imgEl = document.createElement("img"); //created the image element to display the image once time ends.
-  imgEl.setAttribute("src", "assets/gameover.jpg"); // image source  
-  timeEl.appendChild(imgEl); //appending image.
-}
-setTime();
+  function setTime() {
+    console.log ("start quiz")
+    var timerInterval = setInterval(function() {
+      secondsLeft--;
+      timeEl.textContent = secondsLeft + " seconds Left.";
+      if(secondsLeft === 0) {
+        clearInterval(timerInterval);
+        sendMessage();
+      }
+    }, 1000);
+  };
+  function sendMessage() {
+    timeEl.textContent = " ";
+    var imgEl = document.createElement("img"); //created the image element to display the image once time ends.
+    imgEl.setAttribute("src", "assets/gameover.jpg"); // image source  
+    timeEl.appendChild(imgEl); //appending image.
+  }
+  setTime();
+
+  // function next (){
+  //   console.log ( showQuestion);
+  //   showQuestion ++;
+  // }
+
 // timer code ends
  
 // 2. this questions will be presented once the user clicks on the start.
@@ -41,50 +53,62 @@ var quesArray = [
   {
     question:"How many planets are in our solar system?",
     choices:["1","8","9","5"],
-    correct: "8"
+    correct: "8",
   },
   {
     question:"which planet is not part of our solar system? ",
     choices:["Mars","Neptune","Pluto","Earth"],
-    correct: "Pluto"
+    correct: "Pluto",
   },
   {
     question:"is there any Gravity of moon ? ",
     choices:["162 m/s2","0","1.62 m/s2","16.2"],
-    correct: "1.62 m/s2"
+    correct: "1.62 m/s2",
   },
   {
     question: "Which planet have the maximum numbers of moon, in our solar system ",
     choices : ["Mars","Neptune","Saturn","Jupiter"],
-    correct: "Jupiter"
+    correct: "Jupiter",
   }];
   // array for the question ENDED>>
 
+  var currentIndex = 0
 
-var currentIndex = 0 
 function showQuestions (){
 question.textContent = quesArray[currentIndex].question //this is putting a question that matches the current Index into question no. 1
 quesArray[currentIndex].choices.forEach(function(choiceName, choiceIndex){ // this is looping thru all the choicenames using its index and displaying them on the screen
   // write a code for the loop to run more than once. 
  var choiceBtn = document.createElement("button"); // this is creating a choice button for each choice 
   choiceBtn.textContent = choiceName;  // this is updating the text Content of each ChoiceBtn to display its NAME.
+  choiceName.textContent ="";
   choices.appendChild(choiceBtn) //ths is display the choices with the actual content usind appendchild
+  choiceBtn.addEventListener ("click", chooseAnswer);
   console.log (choices.appendChild(choiceBtn))
 })
 };
+
+function chooseAnswer (e){
+  console.log (e.target.textContent);
+  nextQuestions();
+}
+
+function nextQuestions(){
+  currentIndex++;
+  showQuestions();
+}
 
 
 
   // once user clicks on a choice..store that value...and check if that value equals the value of correct answer of that question.
   // choiceBtn.addEventListener("click", function(event) {
   //   event.preventDefault();
-  //   if(choiceBtn.matches === quesArray.correct) {
-  //     var correctAnswer = document.createElement("div");
-  //     correctAnswer.textContent = correct;
-  //     score +=5
-  //     score.append(correct);
-  //   }
-  //   currentIndex++
+    // if(choiceBtn.matches === quesArray.correct) {
+    //   var correctAnswer = document.createElement("div");
+    //   correctAnswer.textContent = correct;
+    //   score +=5
+    //   score.append(correct);
+    // }
+    // currentIndex++
   // });
   // quesArray.correct= correctAnswer 
   // function correctAnswer (){
@@ -127,7 +151,7 @@ quesArray[currentIndex].choices.forEach(function(choiceName, choiceIndex){ // th
 
 // var highestScore = "#highestScore"
 //submitButton.addEventListener('click', showResults);
-startBtn.addEventListener("click", showQuestions())
+
 // Event.preventDefault();
 // choices.addEventListener("click", correctAnswer)
 // startBtn.addEventListener("click", setTime)

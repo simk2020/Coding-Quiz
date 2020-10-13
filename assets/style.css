@@ -35,5 +35,8 @@
     padding: 30px;
     color: #361e46;
     text-align: center;
+  }
 
+  .next {
+    display:none;
   }
