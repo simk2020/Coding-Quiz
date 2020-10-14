@@ -1,13 +1,13 @@
 
-// variable decleration >> 
+// variable  >> 
 var startBtn = document.querySelector("#startBtn");
 var question = document.querySelector("#questions");
 var choices = document.querySelector("#choices");
-var score = document.querySelector("score");
 var timeEl = document.querySelector(".time");
 var nextchoice = document.getElementById("next-btn");
-
-
+var result = document.querySelector(".result");
+var score = 0 ;
+var highest ;
 
 startBtn.addEventListener("click", showQuestions)
 
@@ -76,25 +76,52 @@ var quesArray = [
 
 function showQuestions (){
 question.textContent = quesArray[currentIndex].question //this is putting a question that matches the current Index into question no. 1
+//clear our old choices first before loading new choices
+choices.textContent = ""
+
 quesArray[currentIndex].choices.forEach(function(choiceName, choiceIndex){ // this is looping thru all the choicenames using its index and displaying them on the screen
   // write a code for the loop to run more than once. 
+
  var choiceBtn = document.createElement("button"); // this is creating a choice button for each choice 
-  choiceBtn.textContent = choiceName;  // this is updating the text Content of each ChoiceBtn to display its NAME.
-  choiceName.textContent ="";
+ choiceBtn.setAttribute("value", choiceName)
+ choiceBtn.textContent = choiceName;  // this is updating the text Content of each ChoiceBtn to display its NAME.
+  //choiceName.textContent ="";
   choices.appendChild(choiceBtn) //ths is display the choices with the actual content usind appendchild
-  choiceBtn.addEventListener ("click", chooseAnswer);
+//choiceBtn.addEventListener ("click", nextQuestions);
+  choiceBtn.onclick = nextQuestions;
   console.log (choices.appendChild(choiceBtn))
 })
 };
 
-function chooseAnswer (e){
-  console.log (e.target.textContent);
-  nextQuestions();
-}
+// function chooseAnswer (e){
+//   console.log (e.target.textContent);
+//   nextQuestions();
+// }
+
 
 function nextQuestions(){
+  console.log ("Answer clicked: " + this.value)
+  console.log ("Correct answer " + quesArray[currentIndex].correct)
+if (this.value === quesArray[currentIndex].correct){
+  score += 5;
+  result.textContent = "Correct";
+}
+else {
+  secondsLeft -= 5;
+  result.textContent = "Wrong Answer";
+};
+
+
   currentIndex++;
-  showQuestions();
+  console.log(currentIndex)
+
+  if(quesArray.length === currentIndex ){
+    //Call the function to end the quiz
+    sendMessage();
+  }else{
+    showQuestions();
+
+  }
 }
 
 
