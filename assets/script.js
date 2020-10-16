@@ -6,7 +6,7 @@ var choices = document.querySelector("#choices");
 var timeEl = document.querySelector(".time");
 var nextchoice = document.getElementById("next-btn");
 var result = document.querySelector(".result");
-var score = 0 ;
+var score = document.querySelector(".score") ;
 var highest ;
 
 startBtn.addEventListener("click", showQuestions)
@@ -63,13 +63,12 @@ var quesArray = [
   }];
   // array for the question ENDED>>
 
-  var currentIndex = 0
+var currentIndex = 0
 
 function showQuestions (){
 question.textContent = quesArray[currentIndex].question //this is putting a question that matches the current Index into question no. 1
 //clear our old choices first before loading new choices
 choices.textContent = "" ;
-
 quesArray[currentIndex].choices.forEach(function(choiceName, choiceIndex){ // this is looping thru all the choicenames using its index and displaying them on the screen
   // write a code for the loop to run more than once. 
 
@@ -84,17 +83,12 @@ quesArray[currentIndex].choices.forEach(function(choiceName, choiceIndex){ // th
 })
 };
 
-// function chooseAnswer (e){
-//   console.log (e.target.textContent);
-//   nextQuestions();
-// }
-
-
 function nextQuestions(){
   console.log ("Answer clicked: " + this.value)
   console.log ("Correct answer " + quesArray[currentIndex].correct)
 if (this.value === quesArray[currentIndex].correct){
   score += 5;
+  innerHeight += score;
   result.textContent = "Correct";
 }
 else {
@@ -116,7 +110,7 @@ else {
 }
 
 var highestScore = "" ;
-$("highestScore").val() = score
+// $("highestScore").val() = score
 
   // once all questions are answered or the timer reaches 0 - game over
   // WHEN the game is over, user gets his score displayed and gets prompted to add his initials. 

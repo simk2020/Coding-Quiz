@@ -41,7 +41,6 @@
     display:none;
   }
 
-  #result {
-    align-content: center;
-
+  .result {
+    text-align: center;
   }
