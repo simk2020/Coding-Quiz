@@ -13,7 +13,7 @@ startBtn.addEventListener("click", showQuestions)
 
 
 // timer code starts
-var secondsLeft = 40;
+var secondsLeft = 50;
   function setTime() {
     console.log ("start quiz")
     var timerInterval = setInterval(function() {
@@ -42,17 +42,22 @@ var quesArray = [
     correct: "8",
   },
   {
-    question:"which planet is not part of our solar system? ",
+    question:"Name of the planet which is not part of the solar system? ",
     choices:["Mars","Neptune","Pluto","Earth"],
     correct: "Pluto",
   },
   {
-    question:"is there any Gravity of moon ? ",
-    choices:["162 m/s2","0","1.62 m/s2","16.2"],
+    question:" how many drawf planets are there in the universe ? ",
+    choices:["4","1","10","5"],
+    correct: "5",
+  },
+  {
+    question:"Gravity of moon? ",
+    choices:["162 m/s2","0","1.62 m/s2","16.2 m/s2"],
     correct: "1.62 m/s2",
   },
   {
-    question: "Which planet have the maximum numbers of moon, in our solar system ?",
+    question: "Name of the planet with maximum numbers of moon?",
     choices : ["Mars","Neptune","Saturn","Jupiter"],
     correct: "Jupiter",
   }];
