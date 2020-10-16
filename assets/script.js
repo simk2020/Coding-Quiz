@@ -32,21 +32,7 @@ var secondsLeft = 40;
     timeEl.appendChild(imgEl); //appending image.
   }
   setTime();
-
-  // function next (){
-  //   console.log ( showQuestion);
-  //   showQuestion ++;
-  // }
-
 // timer code ends
- 
-// 2. this questions will be presented once the user clicks on the start.
-// created a variable called questions to store an array of all the multiple choice questions, its choices and corect answers. 
-
-  //{} key-value pairs
-//quesArray[0].question will return "how many planets in our solar system?"
-//[0] is the index of the first question
-//To move up to the next question, we need to increase the array index
 
 // array for the question created>>
 var quesArray = [
@@ -66,7 +52,7 @@ var quesArray = [
     correct: "1.62 m/s2",
   },
   {
-    question: "Which planet have the maximum numbers of moon, in our solar system ",
+    question: "Which planet have the maximum numbers of moon, in our solar system ?",
     choices : ["Mars","Neptune","Saturn","Jupiter"],
     correct: "Jupiter",
   }];
@@ -77,7 +63,7 @@ var quesArray = [
 function showQuestions (){
 question.textContent = quesArray[currentIndex].question //this is putting a question that matches the current Index into question no. 1
 //clear our old choices first before loading new choices
-choices.textContent = ""
+choices.textContent = "" ;
 
 quesArray[currentIndex].choices.forEach(function(choiceName, choiceIndex){ // this is looping thru all the choicenames using its index and displaying them on the screen
   // write a code for the loop to run more than once. 
@@ -111,75 +97,26 @@ else {
   result.textContent = "Wrong Answer";
 };
 
-
   currentIndex++;
   console.log(currentIndex)
 
   if(quesArray.length === currentIndex ){
     //Call the function to end the quiz
+    secondsLeft -= secondsLeft;
     sendMessage();
-  }else{
+  }
+  else{
     showQuestions();
-
   }
 }
 
-
-
-  // once user clicks on a choice..store that value...and check if that value equals the value of correct answer of that question.
-  // choiceBtn.addEventListener("click", function(event) {
-  //   event.preventDefault();
-    // if(choiceBtn.matches === quesArray.correct) {
-    //   var correctAnswer = document.createElement("div");
-    //   correctAnswer.textContent = correct;
-    //   score +=5
-    //   score.append(correct);
-    // }
-    // currentIndex++
-  // });
-  // quesArray.correct= correctAnswer 
-  // function correctAnswer (){
-  //   console.log ("works till now")
-    
-  // }
-
-  // if (choiceBtn.textContent === quesArray.choiceIndex()){
-  //   
-  // }
-  // else {
-  //   score +=0
-  //   timeEl -= 5
-  // }
-
-//  if (choiceBtn === correct) // if choiceBtn clicked is equal to correct 
-// textContent : correct  // display string Correct at the bottom of the choices
-//   score +=5 
-  // else {
-  //   // textContent : wrong 
-  //   score += 0;
-  //   time -= 10 ;
-  // } 
-  
-// next question2
-// 
-
-//  user get presented with a new questions after answering each question. so may be a loop for next question to be prompted. 
-// once either user answer 1 q correctly or incorrectly (-5 sec) or time per question runs out, call for the next question. 
+var highestScore = "" ;
+$("highestScore").val() = score
 
   // once all questions are answered or the timer reaches 0 - game over
-
   // WHEN the game is over, user gets his score displayed and gets prompted to add his initials. 
-
   // add click event . once user submit his initials>>
-
   // screen displays the highest score from its local store. 
   // if new highscore is more than highest stored score, than its displayed or else, old highest score gets displayed.
 
 
-// var highestScore = "#highestScore"
-//submitButton.addEventListener('click', showResults);
-
-// Event.preventDefault();
-// choices.addEventListener("click", correctAnswer)
-// startBtn.addEventListener("click", setTime)
-//startBtn.onclick = showQuestions;

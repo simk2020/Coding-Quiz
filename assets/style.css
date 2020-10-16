@@ -40,3 +40,8 @@
   .next {
     display:none;
   }
+
+  #result {
+    align-content: center;
+
+  }
