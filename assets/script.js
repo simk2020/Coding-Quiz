@@ -9,8 +9,11 @@ var result = document.querySelector(".result");
 var score = document.querySelector(".score") ;
 var highest ;
 
-startBtn.addEventListener("click", showQuestions)
-
+startBtn.addEventListener("click", function (event) {
+  startBtn.style.display = 'none'
+  showQuestions();
+  setTime();
+});
 
 // timer code starts
 var secondsLeft = 50;
@@ -19,7 +22,7 @@ var secondsLeft = 50;
     var timerInterval = setInterval(function() {
       secondsLeft--;
       timeEl.textContent = secondsLeft + " seconds Left.";
-      if(secondsLeft === 0) {
+      if(secondsLeft <= 0) {
         clearInterval(timerInterval);
         sendMessage();
       }
@@ -31,7 +34,6 @@ var secondsLeft = 50;
     imgEl.setAttribute("src", "assets/gameover.jpg"); // image source  
     timeEl.appendChild(imgEl); //appending image.
   }
-  setTime();
 // timer code ends
 
 // array for the question created>>
@@ -82,13 +84,13 @@ quesArray[currentIndex].choices.forEach(function(choiceName, choiceIndex){ // th
   console.log (choices.appendChild(choiceBtn))
 })
 };
-
+// $(document).ready - cant use it? 
 function nextQuestions(){
   console.log ("Answer clicked: " + this.value)
   console.log ("Correct answer " + quesArray[currentIndex].correct)
 if (this.value === quesArray[currentIndex].correct){
   score += 5;
-  innerHeight += score;
+  highestScore += score;
   result.textContent = "Correct";
 }
 else {
@@ -101,7 +103,7 @@ else {
 
   if(quesArray.length === currentIndex ){
     //Call the function to end the quiz
-    secondsLeft -= secondsLeft;
+    secondsLeft = 0;
     sendMessage();
   }
   else{
