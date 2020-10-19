@@ -11,7 +11,8 @@ var highestScore = document.querySelector(".highestScore");
 var name = document.querySelector (".name");
 var scorestore = 0;
 var highscore = localStorage.getItem("highscore");
-var nameDisplay = localStorage.getItem("nameDisplay");
+var nameDisplay = localStorage.getItem("askname");
+name.textContent = "Name : " + nameDisplay;
 highestScore.textContent = "Saved HighScore : " + highscore;
 
 startBtn.addEventListener("click", function (event) {
@@ -34,8 +35,8 @@ var secondsLeft = 25;
     }, 1000);
   };
   function sendMessage() {
-    var nameDisplay = prompt("Please write your name?");  
-    localStorage.setItem("nameDisplay", nameDisplay)
+    var askname = prompt("Please write your name?");  
+    localStorage.setItem("nameDisplay", askname)
     console.log (localStorage)
     if(highscore !== null){
 
