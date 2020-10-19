@@ -5,9 +5,14 @@ var question = document.querySelector("#questions");
 var choices = document.querySelector("#choices");
 var timeEl = document.querySelector(".time");
 var nextchoice = document.getElementById("next-btn");
-var result = document.querySelector(".result");
 var score = document.querySelector(".score") ;
-var highest ;
+var result= document.querySelector ("#result");
+var highestScore = document.querySelector(".highestScore");
+var name = document.querySelector (".name");
+var scorestore = 0;
+var highscore = localStorage.getItem("highscore");
+var nameDisplay = localStorage.getItem("nameDisplay");
+highestScore.textContent = "Saved HighScore : " + highscore;
 
 startBtn.addEventListener("click", function (event) {
   startBtn.style.display = 'none'
@@ -16,7 +21,7 @@ startBtn.addEventListener("click", function (event) {
 });
 
 // timer code starts
-var secondsLeft = 50;
+var secondsLeft = 25;
   function setTime() {
     console.log ("start quiz")
     var timerInterval = setInterval(function() {
@@ -29,6 +34,18 @@ var secondsLeft = 50;
     }, 1000);
   };
   function sendMessage() {
+    var nameDisplay = prompt("Please write your name?");  
+    localStorage.setItem("nameDisplay", nameDisplay)
+    console.log (localStorage)
+    if(highscore !== null){
+
+      if(scorestore > highscore){
+        localStorage.setItem("highscore", scorestore)
+      }
+    }
+    else{
+      localStorage.setItem("highscore", scorestore)
+    }
     timeEl.textContent = " ";
     var imgEl = document.createElement("img"); //created the image element to display the image once time ends.
     imgEl.setAttribute("src", "assets/gameover.jpg"); // image source  
@@ -89,8 +106,8 @@ function nextQuestions(){
   console.log ("Answer clicked: " + this.value)
   console.log ("Correct answer " + quesArray[currentIndex].correct)
 if (this.value === quesArray[currentIndex].correct){
-  score += 5;
-  highestScore += score;
+  scorestore += 5;
+  score.textContent = "Score: "+ scorestore ;
   result.textContent = "Correct";
 }
 else {
@@ -101,7 +118,7 @@ else {
   currentIndex++;
   console.log(currentIndex)
 
-  if(quesArray.length === currentIndex ){
+  if(quesArray.length === currentIndex || secondsLeft === 0 ){
     //Call the function to end the quiz
     secondsLeft = 0;
     sendMessage();
@@ -110,14 +127,4 @@ else {
     showQuestions();
   }
 }
-
-var highestScore = "" ;
-// $("highestScore").val() = score
-
-  // once all questions are answered or the timer reaches 0 - game over
-  // WHEN the game is over, user gets his score displayed and gets prompted to add his initials. 
-  // add click event . once user submit his initials>>
-  // screen displays the highest score from its local store. 
-  // if new highscore is more than highest stored score, than its displayed or else, old highest score gets displayed.
-
 
